@@ -10,35 +10,129 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+const employees = [];
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
+
+// inquirer prompt #1
 inquirer.prompt([
-    {
+
+
         // questions about the manager
-    }
-])
 
-function initialize () {
+    {
+  type: "input",
+  name: "manager-name",
+  message: "What is your manager's name?"
+},
+{
+  type: "input",
+  name: "manager-id",
+  message: "What is your manager's id?"
+},
+{
+  type: "input",
+  name: "manager-email",
+  message: "What is your manager's email?"
+},
+{
+  type: "input",
+  name: "manager-office-#",
+  message: "What is your manager's office number?"
+},
+{
+  type: "list",
+  name: "addTeamMember",
+  message: "Which type of team member would you like to add?",
+  choices: [
+      "Engineer",
+      "Intern",
+      "I don't want to add any more team members"
+  ]
+},
+// engineer questions
+{
+    type: "input",
+    name: "engineer-name",
+    message: "What is your engineer's name?"
+  },
+{
+    type: "input",
+    name: "engineer-id",
+    message: "What is your engineer's id?"
+  },
+{
+    type: "input",
+    name: "engineer-email",
+    message: "What is your engineer's email?"
+  },
+{
+    type: "input",
+    name: "engineer-Github",
+    message: "What is your engineer's Github username?"
+  },
+//   intern questions
 
-    inquirer.prompt(
-        questions
-    ).then(function(data) {
-        fs.writeFile()
+{
+    type: "input",
+    name: "intern-name",
+    message: "What is your intern's name?"
+},
+{
+    type: "input",
+    name: "intern-id",
+    message: "What is your intern's id?"
+},
+{
+    type: "input",
+    name: "intern-email",
+    message: "What is your intern's email?"
+},
+{
+    type: "input",
+    name: "intern-school",
+    message: "What is your intern's school?"
+},
+    
+]).then(function(managerAnswers) {
+    const manager = new Manager(managerAnswers.name,managerAnswers.id, managerAnswers.email, managerAnswers.office);
+    employees.push(manager);
+
+    //recursion 
+    makeEmployees();
+
+function makeEmployees() {
+    // inquirer prompt #2
+    // which type of team member would you like to add?
+    // -engineer
+    // -intern
+    // -no more team members
+    .then(function(typeAnswers) {
+        if(typeAnswers === "Engineer") {
+            // Inquirer prompt #3
+            // Engineer questions
+        //     .then(function(engineerAnswers) {
+        //         const engineer = new Engineer ()
+        //         employees.push(engineer)
+        //         makeEmployees();
+        //     })
+        // } else if (typeAnswers === "Intern") {
+        //     // inquirer prompt #4
+        //         makeEmployees();
+
+        // } else {
+        //     // Exit the inquirer
+        //     const html = render(employees);
+        // }
     })
-}
+} 
 
 
-function TeamMember (name, title, id, email, office) {
-    this.name = name;
-    this.title = title;
-    this.id = id;
-    this.email = email;
-    this.office = office;
-}
 
-const person1 = new TeamMember(); 
+
+
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
@@ -61,7 +155,6 @@ const person1 = new TeamMember();
 // for the provided `render` function to work! ```
 
 
-const html = render(employees); 
 
 fs.writeFile(outputPath, html, function(error) {
     if(error) {
