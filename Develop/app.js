@@ -22,38 +22,36 @@ inquirer.prompt(
     [{
         // questions about the manager
         type: "input",
-        name: "manager-name",
+        name: "name",
         message: "What is your manager's name?"
     },
     {
         type: "input",
-        name: "manager-id",
+        name: "id",
         message: "What is your manager's id?"
     },
     {
         type: "input",
-        name: "manager-email",
+        name: "email",
         message: "What is your manager's email?"
     },
     {
         type: "input",
-        name: "manager-office-#",
+        name: "office",
         message: "What is your manager's office number?"
     }]
 ).then(function (managerAnswers) {
+    console.log(managerAnswers);
     const manager = new Manager(managerAnswers.name, managerAnswers.id, managerAnswers.email, managerAnswers.office);
     employees.push(manager);
 
-    
+
     makeEmployees(); //calling the function for the first time; it will recur later
 
     function makeEmployees() {
         // inquirer prompt #2
         inquirer.prompt([
-            // which type of team member would you like to add?
-            // -engineer
-            // -intern
-            // -no more team members
+            
             {
                 type: "list",
                 name: "addTeamMember",
@@ -66,28 +64,30 @@ inquirer.prompt(
             }
         ])
             .then(function (typeOfTeamMember) {
-                if (typeOfTeamMember === "Engineer") {
+                    console.log(typeOfTeamMember.addTeamMember);
+
+                if (typeOfTeamMember.addTeamMember === "Engineer") {
                     // Inquirer prompt #3
                     inquirer.prompt([
                         // engineer questions
                         {
                             type: "input",
-                            name: "engineer-name",
+                            name: "name",
                             message: "What is your engineer's name?"
                         },
                         {
                             type: "input",
-                            name: "engineer-id",
+                            name: "id",
                             message: "What is your engineer's id?"
                         },
                         {
                             type: "input",
-                            name: "engineer-email",
+                            name: "email",
                             message: "What is your engineer's email?"
                         },
                         {
                             type: "input",
-                            name: "engineer-Github",
+                            name: "github",
                             message: "What is your engineer's Github username?"
                         }])
 
@@ -99,31 +99,28 @@ inquirer.prompt(
                             makeEmployees(); //recursion
                         })
 
-
-                        working on the new employee objects so that their name, id, email, and github key/value pairs are included when each person is pushed to the employees array"
-
-                } else if (typeOfTeamMember === "Intern") {
+                } else if (typeOfTeamMember.addTeamMember === "Intern") {
                     //     // inquirer prompt #4
                     inquirer.prompt([
                         //   intern questions
                         {
                             type: "input",
-                            name: "intern-name",
+                            name: "name",
                             message: "What is your intern's name?"
                         },
                         {
                             type: "input",
-                            name: "intern-id",
+                            name: "id",
                             message: "What is your intern's id?"
                         },
                         {
                             type: "input",
-                            name: "intern-email",
+                            name: "email",
                             message: "What is your intern's email?"
                         },
                         {
                             type: "input",
-                            name: "intern-school",
+                            name: "school",
                             message: "What is your intern's school?"
                         }
                     ])
@@ -131,7 +128,7 @@ inquirer.prompt(
                         .then(function (internAnswers) {
                             const intern = new Intern(internAnswers.name, internAnswers.id, internAnswers.email, internAnswers.school)
                             employees.push(intern)
-                            
+
                             makeEmployees(); //recursion
                         })
 
@@ -152,10 +149,14 @@ inquirer.prompt(
 
 
                     fs.writeFile(outputPath, html, function (error) {
-                        if (error)
-                            throw err;
+                        if (error) {
+
+                            console.log("robert/       " + outputPath);
+                            throw error;
+                        }
 
                         console.log("Success");
+
                     });
 
 
