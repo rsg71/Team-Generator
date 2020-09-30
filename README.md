@@ -4,7 +4,7 @@
 
 ## Description
 
-This team profile generator walks the read through a command line interface to generate team members on an html page. Users will enter a name, id, and email for all employees but will specialize the information depending on the type of employee (manager, engineer, or intern). Managers have an office number, engineers have a github username, and interns have a school. Once the user has completed filling out all information for their employees, they opt to not enter any more information and ultimately generate the team profile page as an html file. 
+This team profile generator walks the user through a command line interface to generate team members on an html page. Users will enter a name, id, and email for all employees but will specialize the information depending on the type of employee (manager, engineer, or intern). Managers have an office number, engineers have a github username, and interns have a school. Once the user has completed filling out all information for their employees, they opt to not enter any more information and ultimately generate the team profile page as an html file. 
 
 ## Table of Contents
 
@@ -15,7 +15,7 @@ This team profile generator walks the read through a command line interface to g
 
 ## Usage
 
-**Below is a demonstration of the application functions**
+**Below is a demonstration of the application functionality**
 
 <img src="imgs/first_gif.gif">
 <img src="imgs/second_gif.gif">
@@ -42,7 +42,7 @@ github.com/rsg71
 
 MIT License
 
-Copyright (c) 2020 James Lamb
+Copyright (c) 2020 Robert Greenawalt
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
