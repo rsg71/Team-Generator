@@ -15,11 +15,16 @@ This team profile generator walks the user through a command line interface to g
 
 ## Usage
 
+
+[Click here for a full video demonstration!](https://drive.google.com/file/d/1iV6ths4t4aKgbX0jN-uPfY_aCc7ZXkXo/view)
+
+
 **Below is a demonstration of the application functionality**
 
 <img src="imgs/first_gif.gif">
 <img src="imgs/second_gif.gif">
 <img src="imgs/third_gif.gif">
+
 
 
 ## Credits
@@ -31,7 +36,7 @@ This team profile generator walks the user through a command line interface to g
 
 To run tests, run the following command: 
 
-npm run test
+`npm run test`
 
 
 ## Questions:
